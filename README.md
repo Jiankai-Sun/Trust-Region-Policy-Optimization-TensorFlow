@@ -25,6 +25,12 @@
   bibsource = {dblp computer science bibliography, http://dblp.org}
 }
 ```
+## Contributions
+- Update for TensorFlow 1.3
+- Fix some bugs. In file `main.py`, Add
+```
+history["maxkl"] = []
+```
 
 ## About
 

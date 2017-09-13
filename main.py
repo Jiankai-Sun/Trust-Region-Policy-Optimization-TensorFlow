@@ -47,6 +47,7 @@ history["rollout_time"] = []
 history["learn_time"] = []
 history["mean_reward"] = []
 history["timesteps"] = []
+history["maxkl"] = []
 
 # start it off with a big negative number
 last_reward = -1000000

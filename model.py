@@ -48,7 +48,7 @@ class TRPO(multiprocessing.Process):
         # means for each action
         self.action_dist_mu = h3
         # log standard deviations for each actions
-        self.action_dist_logstd = tf.tile(action_dist_logstd_param, tf.pack((tf.shape(self.action_dist_mu)[0], 1)))
+        self.action_dist_logstd = tf.tile(action_dist_logstd_param, tf.stack((tf.shape(self.action_dist_mu)[0], 1)))
 
         batch_size = tf.shape(self.obs)[0]
         # what are the probabilities of taking self.action, given new and old distributions
@@ -93,7 +93,7 @@ class TRPO(multiprocessing.Process):
         self.gf = GetFlat(self.session, var_list)
         # call this to set parameter values
         self.sff = SetFromFlat(self.session, var_list)
-        self.session.run(tf.initialize_all_variables())
+        self.session.run(tf.global_variables_initializer())
         # value function
         # self.vf = VF(self.session)
         self.vf = LinearVF()

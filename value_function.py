@@ -25,7 +25,7 @@ class VF(object):
         self.net = tf.reshape(h3, (-1,))
         l2 = tf.nn.l2_loss(self.net - self.y)
         self.train = tf.train.AdamOptimizer().minimize(l2)
-        self.session.run(tf.initialize_all_variables())
+        self.session.run(tf.global_variables_initializer())
 
 
     def _features(self, path):
